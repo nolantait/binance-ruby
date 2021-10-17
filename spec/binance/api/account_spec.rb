@@ -15,7 +15,7 @@ RSpec.describe Binance::Api::Account do
 
     context "when api responds with error" do
       let!(:request_stub) do
-        stub_request(:get, "https://api.binance.com/wapi/v3/assetDetail.html")
+        stub_request(:get, "https://api.binance.com/sapi/v1/asset/assetDetail.html")
           .with(query: query_string + "&signature=#{signature}")
           .to_return(status: 400, body: { msg: "error", code: "400" }.to_json)
       end
@@ -30,7 +30,7 @@ RSpec.describe Binance::Api::Account do
 
     context "when api succeeds" do
       let!(:request_stub) do
-        stub_request(:get, "https://api.binance.com/wapi/v3/assetDetail.html")
+        stub_request(:get, "https://api.binance.com/sapi/v1/asset/assetDetail.html")
           .with(query: query_string + "&signature=#{signature}")
           .to_return(status: 200, body: json_fixture("assetDetail"))
       end

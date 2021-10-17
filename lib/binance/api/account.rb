@@ -5,7 +5,7 @@ module Binance
         def fees!(recvWindow: 5000, api_key: nil, api_secret_key: nil)
           timestamp = Configuration.timestamp
           params = { recvWindow: recvWindow, timestamp: timestamp }
-          Request.send!(api_key_type: :read_info, path: "/wapi/v3/assetDetail.html",
+          Request.send!(api_key_type: :read_info, path: "/sapi/v1/asset/assetDetail.html",
                         params: params.delete_if { |key, value| value.nil? },
                         security_type: :user_data, api_key: api_key, api_secret_key: api_secret_key)
         end
